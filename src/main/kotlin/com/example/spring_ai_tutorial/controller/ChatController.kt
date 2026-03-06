@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.*
  */
 @RestController
 @RequestMapping("/api/v1/chat")
-@Tag(name= "Chat API", description = "OpenAI API를 통한 채팅 기능")
+@Tag(name= "Chat API", description = "Gemini API를 통한 채팅 기능")
 class ChatController(
     private val chatService: ChatService
 ) {
@@ -40,7 +40,7 @@ class ChatController(
     @SwaggerResponse(responseCode = "400", description = "잘못된 요청")
     @SwaggerResponse(responseCode = "500", description = "서버 오류")
     @PostMapping("/query")
-    suspend fun sendMessage(
+    fun sendMessage(
         @Parameter(description = "채팅 요청 객체", required = true)
         @RequestBody request: ChatRequest
     ): ResponseEntity<ApiResponse<Map<String, Any>>> {
@@ -59,7 +59,7 @@ class ChatController(
             val systemMessage = "You are a helpful AI assistant."
 
             // AI 응답 생성
-            val response = chatService.openAiChat(
+            val response = chatService.chat(
                 userInput = request.query,
                 systemMessage = systemMessage,
                 model = request.model
@@ -70,7 +70,7 @@ class ChatController(
                 ResponseEntity.ok(
                     ApiResponse(
                         success = true,
-                        data = mapOf("answer" to chatResponse.result.output.text)
+                        data = mapOf("answer" to (chatResponse.result.output.text ?: ""))
                     )
                 )
             } ?: run {
@@ -99,8 +99,8 @@ data class ChatRequest(
     @Schema(description = "사용자 질문", example = "안녕하세요")
     val query: String,
 
-    @Schema(description = "사용할 LLM 모델", example = "gpt-3.5-turbo", defaultValue = "gpt-3.5-turbo")
-    val model: String = "gpt-3.5-turbo"
+    @Schema(description = "사용할 LLM 모델", example = "gemini-2.5-flash", defaultValue = "gemini-2.5-flash")
+    val model: String = "gemini-1.5-flash"
 )
 
 @Schema(description = "API 응답 포맷")
