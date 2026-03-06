@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.*
  */
 @RestController
 @RequestMapping("/api/v1/chat")
+@Tag(name= "Chat API", description = "OpenAI API를 통한 채팅 기능")
 class ChatController(
     private val chatService: ChatService
 ) {
@@ -27,7 +28,17 @@ class ChatController(
     /**
      * 사용자의 메시지를 받아 OpenAI API로 응답 생성
      */
-
+    @Operation(
+            summary = "LLM 채팅 메시지 전송",
+            description = "사용자의 메시지를 받아 OpenAI API를 통해 응답을 생성합니다."
+    )
+    @SwaggerResponse(
+            responseCode = "200",
+            description = "LLM 응답 성공",
+            content = [Content(schema = Schema(implementation = ApiResponse::class))]
+    )
+    @SwaggerResponse(responseCode = "400", description = "잘못된 요청")
+    @SwaggerResponse(responseCode = "500", description = "서버 오류")
     @PostMapping("/query")
     suspend fun sendMessage(
         @Parameter(description = "채팅 요청 객체", required = true)
