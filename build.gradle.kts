@@ -35,12 +35,23 @@ dependencies {
 
 	// Spring AI Gemini
 	implementation("org.springframework.ai:spring-ai-starter-model-google-genai")
+	implementation("org.springframework.ai:spring-ai-starter-model-google-genai-embedding")
+	implementation("org.springframework.ai:spring-ai-core")
+	implementation("org.springframework.ai:spring-ai-vector-store")
 
+
+	//PDF 처리 라이브러리
+	implementation ("org.apache.pdfbox:pdfbox:2.0.30")
 	// swagger
 	implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.3.0")
 
 	// logging
 	implementation("io.github.oshai:kotlin-logging:6.0.3")
+
+	//테스트 의존성
+	testImplementation("org.springframework.boot:spring-boot-starter-test")
+	testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
+	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
 
 
