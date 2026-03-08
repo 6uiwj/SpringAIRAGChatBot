@@ -3,7 +3,6 @@ package com.example.spring_ai_tutorial.repository
 import com.example.spring_ai_tutorial.domain.dto.DocumentSearchResultDto
 import com.example.spring_ai_tutorial.exception.DocumentProcessingException
 import com.example.spring_ai_tutorial.service.DocumentProcessingService
-import com.example.spring_ai_tutorial.service.EmbeddingService
 import io.github.oshai.kotlinlogging.KotlinLogging
 import org.springframework.ai.document.Document
 import org.springframework.ai.embedding.EmbeddingModel

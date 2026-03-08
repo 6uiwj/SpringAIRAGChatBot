@@ -17,6 +17,8 @@ java {
 
 repositories {
 	mavenCentral()
+	maven { url = uri("https://repo.spring.io/milestone") }  // 이거 추가!
+
 }
 
 dependencies {
@@ -35,10 +37,8 @@ dependencies {
 
 	// Spring AI Gemini
 	implementation("org.springframework.ai:spring-ai-starter-model-google-genai")
-	implementation("org.springframework.ai:spring-ai-starter-model-google-genai-embedding")
-	implementation("org.springframework.ai:spring-ai-core")
+	implementation("org.springframework.ai:spring-ai-starter-model-google-genai-embedding")  // 다시 추가!
 	implementation("org.springframework.ai:spring-ai-vector-store")
-
 
 	//PDF 처리 라이브러리
 	implementation ("org.apache.pdfbox:pdfbox:2.0.30")

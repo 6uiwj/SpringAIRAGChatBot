@@ -26,7 +26,7 @@ class ChatController(
     private val logger = KotlinLogging.logger {}
 
     /**
-     * 사용자의 메시지를 받아 OpenAI API로 응답 생성
+     * 사용자의 메시지를 받아 gemini API로 응답 생성
      */
     @Operation(
             summary = "LLM 채팅 메시지 전송",

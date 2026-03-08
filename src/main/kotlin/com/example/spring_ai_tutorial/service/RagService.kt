@@ -4,10 +4,12 @@ import com.example.spring_ai_tutorial.domain.dto.DocumentSearchResultDto
 import com.example.spring_ai_tutorial.exception.DocumentProcessingException
 import com.example.spring_ai_tutorial.repository.InMemoryDocumentVectorStore
 import io.github.oshai.kotlinlogging.KotlinLogging
+import org.springframework.stereotype.Service
 import java.io.File
 import java.util.*
 import kotlin.collections.HashMap
 
+@Service
 class RagService(
         private val vectorStore: InMemoryDocumentVectorStore,
         private val chatService: ChatService,
@@ -64,7 +66,7 @@ class RagService(
     fun generateAnswerWithContexts(
             question: String,
             relevantDocs: List<DocumentSearchResultDto>,
-            model: String = "gpt-3.5-turbo"
+            model: String = "gemini-2.5-flash"
     ): String {
         logger.debug { "RAG 응답 생성 시작: '$question', 모델: $model" }
 
