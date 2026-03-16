@@ -111,6 +111,8 @@ class InMemoryDocumentVectorStore(
                         score = result.score ?: 0.0
                 )
             }
+
+            logger.debug { "results: $results" }
         } catch (e: Exception) {
             logger.error(e) { "유사도 검색 실패 - 질의: '$query'" }
             throw DocumentProcessingException("유사도 검색 중 오류 발생: ${e.message}", e)

@@ -29,8 +29,8 @@ data class QueryRequestDto(
         @Schema(description = "최대 검색 결과 수", example = "3", defaultValue = "3")
         val maxResults: Int = 3,
 
-        @Schema(description = "사용할 LLM 모델", example = "gpt-3.5-turbo", defaultValue = "gpt-3.5-turbo")
-        val model: String = "gpt-3.5-turbo"
+        @Schema(description = "사용할 LLM 모델", example = "gemini-2.5-flash", defaultValue = "gemini-2.5-flash")
+        val model: String = "gemini-2.5-flash"
 )
 
 /**
